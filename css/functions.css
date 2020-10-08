@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/*
+  Функция обрезающая единицы измерения и возвращающая число
+  @param {Number}
+  @return {Number}
+ */
+/*
+  Функция возвращающая значение в em
+  **ВСЕГДА ДОЛЖНО БЫТЬ КАК МИНИМУМ 2 ВХОДНЫХ ПАРАМЕТРА**
+  - сколько угодно значений может быть передано в функцию
+  - последний параметр всегда указывает в каком контексте надо считать em'ы
+  @list, @Number $values - значения
+  @return EM
+
+  Примеры :
+    font-size: em($h1-font-size, 16);
+    font-size: em($h1-font-size, $context); Указание контекста(шрифта родителя)
+    border-bottom: em(1px solid black) => .0625em solid black) ;
+    box-shadow: em(0 0 2px #ccc, inset 0 0 5px #eee, $h1-font-size) => 0 0 .125em #ccc, inset 0 0 .3125em #eee; // Множественные значения
+
+  source: https://github.com/pierreburel/sass-em;
+ */

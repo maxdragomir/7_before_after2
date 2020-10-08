@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/*
+ * Функция возвращающая null вместо error если значение в списке не найдено
+ * @param {List} $list - список
+ * @param {Number}$index - индекс эелемента
+ */
+/*Функция замены чего-либо в строке
+  @author Hugo Giraudel
+  @param {String} $string - строка в которой ищем
+  @param {String} $search - то что нужно заменить
+  @param {String} $replace ('') - то на что нужно заменить
+  @return {String} - обновленная строка
+*/
+/*
+ Миксин для rtl
+ Примеры:
+   @include dir((
+      margin-left: 20px
+      padding-right: 10px
+      margin: 10px 10px 10px 10px
+    )); //указание контекста
+ */
