@@ -246,5 +246,5 @@
 <script type="text/javascript" src="js/vue-multiselect.js"></script>
 <!--<script src="https://unpkg.com/vue-resize-text"></script>-->
 <!--<script src="../public/xbet/js/jquery.textfill.js"></script>-->
-<script type="text/javascript" src="js/7_before_after.js"></script>
+<script type="text/javascript" src="js/7_before_after-dist.js"></script>
 <?php include('../assets/footer16april2020.php'); ?>
