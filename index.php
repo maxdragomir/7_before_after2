@@ -189,7 +189,7 @@
                     <div class="ba7-mresult-title ba7-mresult-title--win">ПОБЕДА!</div>
                     <div class="ba7-mresult">ВЫ ВЫИГРАЛИ!</div>
                     <p class="ba7-mresult-text"><span>{{result}}</span><span> UAH</span></p>
-                    <a href="#" class="ba7-btn ba7-btn-green ba7-mresult-btn" @click="$modal.hide('modal-win')"><span>ПРодолжить</span></a>
+                    <a href="javascript:;" class="ba7-btn ba7-btn-green ba7-mresult-btn" @click="$modal.hide('modal-win')"><span>ПРодолжить</span></a>
                 </div>
             </div>
         </modal>
@@ -207,7 +207,7 @@
                 <div class="ba7-modal-in ba7-lose-body">
                     <div class="ba7-mresult-title ba7-mresult-title--lose">ПОРАЖЕНИЕ!</div>
                     <p class="ba7-mresult-text ba7-lose-text">Попробуйте сыграть еще раз!</p>
-                    <a href="#" class="ba7-btn ba7-btn-green ba7-mresult-btn"  @click="$modal.hide('modal-lose')"><span>Продолжить</span></a>
+                    <a href="javascript:;" class="ba7-btn ba7-btn-green ba7-mresult-btn"  @click="$modal.hide('modal-lose')"><span>Продолжить</span></a>
                 </div>
             </div>
         </modal>
