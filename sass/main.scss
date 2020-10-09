@@ -34,7 +34,7 @@ button, input{
   @include media('>FullHD') {
     font-size: 0.8333333333333334vw;
   }
-  &.canClick {
+  &.is-clickable {
     pointer-events: auto;
   }
   &:before{
@@ -186,6 +186,7 @@ button, input{
     height: em(560, $fz);
   }
 }
+
 
 .ba7-head {
   display: flex;
@@ -343,6 +344,11 @@ button, input{
     }
   }
 }
+.is-disabled {
+  -webkit-filter: grayscale(1);
+  pointer-events: none;
+}
+
 
 .ba7-dice{
   position: absolute;
@@ -479,7 +485,7 @@ button, input{
   @media(max-width: 1440px){
     padding: em(2 11 3 15, $fz);
   }
-  &.active-radio{
+  &.js-active-radio{
     border-color: hsl(78, 69%, 41%);
   }
 }
@@ -605,7 +611,7 @@ button, input{
   }
 }
 
-.ba7-radio-container .ba7-radio__inp:checked ~ .ba7-radio__btn:after,
+.js-active-radio .ba7-radio__btn:after,
 .ba7-radio-container:hover .ba7-radio__inp ~ .ba7-radio__btn:after{
   transform: translate(-50%,-50%) scale(1);
 }
@@ -1619,7 +1625,7 @@ button, input{
   }
 }
 
-.start-animation{
+.js-start-animation{
   .ba7-rules{
     animation: .3s 2s forwards opacity;
   }

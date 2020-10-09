@@ -17,9 +17,9 @@ button:active, button:focus, input:active, input:focus {
   line-height: 1.2;
   overflow: hidden;
   background-color: rgba(26, 15, 30, 0.63);
-  pointer-events: none;
+  /*pointer-events: none;*/
 }
-.ba7-page.canClick {
+.ba7-page.is-clickable {
   pointer-events: auto;
 }
 

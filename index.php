@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="../public/xbet/css/jackpot-games.css?2225">
 <link rel="stylesheet" href="css/app.css" id="ltrToRtl">
 
-    <div class="ba7-page">
+    <div class="ba7-page" :class="{ 'js-start-animation': load, 'is-clickable' : clickable}">
         <div class="ba7-btns-wrap" style="position: fixed; left: 0; bottom: 100px; z-index: 100; font-size: 20px;">
             <button class="ex-btn" type="button" @click="$modal.show('modal-rules')" style="font-family: 'Roboto Condensed', sans-serif; text-transform: uppercase; cursor: pointer; display: block; border: none; padding: 8px 10px 6px; margin: 10px 0; font-weight: 700; color: #fff; background: #98c50e;">
                 <span class="ex-btn__text">rules</span>
@@ -64,14 +64,14 @@
                         <div class="ba7-container-move ba7-container-move--left">
                             <div class="ba7-dice-container ba7-dice-container--left">
                                 <div class="ba7-dice">
-                                    <div class="ba7-dice__sprite ba7-dice__sprite--one ba7-dice__sprite--hold" data-dice="0"><span class="ba7-dice__img ba7-dice__img--one"></span></div>
+                                    <div class="ba7-dice__sprite ba7-dice__sprite--one ba7-dice__sprite--hold" :data-dice="0"><span class="ba7-dice__img ba7-dice__img--one"></span></div>
                                 </div>
                             </div>
                         </div>
                         <div class="ba7-container-move ba7-container-move--right">
                             <div class="ba7-dice-container ba7-dice-container--right">
                                 <div class="ba7-dice">
-                                    <div class="ba7-dice__sprite ba7-dice__sprite--two ba7-dice__sprite--hold" data-dice="0"><span class="ba7-dice__img ba7-dice__img--two"></span></div>
+                                    <div class="ba7-dice__sprite ba7-dice__sprite--two ba7-dice__sprite--hold" :data-dice="0"><span class="ba7-dice__img ba7-dice__img--two"></span></div>
                                 </div>
                             </div>
                         </div>
@@ -80,78 +80,70 @@
 
                 <div class="ba7-footer">
                     <div class="ba7-bet-radio">
-                        <template>
-                            <div class="ba7-bet-container ba7-bet-container--before">
-                                <div class="ba7-bet-x">
-                                    <label class="ba7-radio-container">
-                                        <div class="ba7-radio__coef">
-                                            <span class="ba7-radio__value ba7-radio__value--x" data-value="x">x</span>
-                                            <span class="ba7-radio__value" data-value="2.3">2.3</span>
-                                        </div>
-                                        <input type="radio" name="ba7-radio" class="ba7-radio__inp" value="3">
-                                        <span class="ba7-radio__btn"></span>
-                                    </label>
-                                </div>
-                                <div class="ba7-bet-var__container">
-                                    <span class="ba7-textfill-container" v-resize-text="{minFontSize: '11px', maxFontSize: '24px', delay: 200}">
-                                        <span class="ba7-bet-var" data-value="над">над</span>
-                                        <span class="ba7-numbers">8 9 10 11 12</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="ba7-bet-container ba7-bet-container--equal">
-                                <div class="ba7-bet-x">
-                                    <label class="ba7-radio-container">
-                                        <div class="ba7-radio__x-container">
-                                            <span class="ba7-radio__x ba7-radio__x--x" data-value="x">x</span>
-                                            <span class="ba7-radio__x" data-value="5.8">5.8</span>
-                                        </div>
-                                        <input type="radio" name="ba7-radio" value="2">
-                                        <span class="ba7-radiobtn"></span>
-                                    </label>
-                                </div>
-                                <div class="ba7-bet-var__container">
-                                    <span class="ba7-textfill-container">
-                                        <span class="ba7-bet-var" data-value="ровно">ровно</span>
-                                        <span class="ba7-numbers">7</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="ba7-bet-container ba7-bet-container--after">
-                                <div class="ba7-bet-x">
-                                    <label class="ba7-radio-container" data-value="x 2.3">
-                                        <div class="ba7-radio__x-container">
-                                            <span class="ba7-radio__x ba7-radio__x--x" data-value="x">x</span>
-                                            <span class="ba7-radio__x" data-value="2.3">2.3</span>
-                                        </div>
-                                        <input type="radio"  name="ba7-radio" value="1">
-                                        <span class="ba7-radiobtn"></span>
-                                    </label>
-                                </div>
-                                <div class="ba7-bet-var__container">
-                                    <span class="ba7-textfill-container" v-resize-text="{minFontSize: '11px', maxFontSize: '24px', delay: 200}">
-                                        <span class="ba7-bet-var" data-value="под">под</span>
-                                        <span class="ba7-numbers">2  3  4  5  6</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </template>
+                          <div class="ba7-bet-container ba7-bet-container--before">
+                              <div class="ba7-bet-x" :class="{ 'js-active-radio': activeRadio === 3, 'is-disabled': disabled }">
+                                  <label class="ba7-radio-container" @click.prevent="activeRadio = 3">
+                                      <div class="ba7-radio__coef">
+                                          <span class="ba7-radio__value ba7-radio__value--x" data-value="x">x</span>
+                                          <span class="ba7-radio__value" data-value="2.3">2.3</span>
+                                      </div>
+                                      <input type="radio" name="ba7-radio" class="ba7-radio__inp" value="3">
+                                      <span class="ba7-radio__btn"></span>
+                                  </label>
+                              </div>
+                              <div class="ba7-bet-var__container">
+                                  <span class="ba7-textfill-container">
+                                      <span class="ba7-bet-var" data-value="над">над</span>
+                                      <span class="ba7-numbers">8 9 10 11 12</span>
+                                  </span>
+                              </div>
+                          </div>
+                          <div class="ba7-bet-container ba7-bet-container--equal">
+                              <div class="ba7-bet-x" :class="{ 'js-active-radio': activeRadio === 2, 'is-disabled': disabled }">
+                                  <label class="ba7-radio-container" @click.prevent="activeRadio = 2">
+                                      <div class="ba7-radio__coef">
+                                          <span class="ba7-radio__value ba7-radio__value--x" data-value="x">x</span>
+                                          <span class="ba7-radio__value" data-value="5.8">5.8</span>
+                                      </div>
+                                      <input type="radio" name="ba7-radio" class="ba7-radio__inp" value="2">
+                                      <span class="ba7-radio__btn"></span>
+                                  </label>
+                              </div>
+                              <div class="ba7-bet-var__container">
+                                  <span class="ba7-textfill-container">
+                                      <span class="ba7-bet-var" data-value="ровно">ровно</span>
+                                      <span class="ba7-numbers">7</span>
+                                  </span>
+                              </div>
+                          </div>
+                          <div class="ba7-bet-container ba7-bet-container--after">
+                              <div class="ba7-bet-x" :class="{ 'js-active-radio': activeRadio === 1, 'is-disabled': disabled }">
+                                  <label class="ba7-radio-container" @click.prevent="activeRadio = 1">
+                                      <div class="ba7-radio__coef">
+                                          <span class="ba7-radio__value ba7-radio__value--x" data-value="x">x</span>
+                                          <span class="ba7-radio__value" data-value="2.3">2.3</span>
+                                      </div>
+                                      <input type="radio"  name="ba7-radio" class="ba7-radio__inp" value="1">
+                                      <span class="ba7-radio__btn"></span>
+                                  </label>
+                              </div>
+                              <div class="ba7-bet-var__container">
+                                  <span class="ba7-textfill-container">
+                                      <span class="ba7-bet-var" data-value="под">под</span>
+                                      <span class="ba7-numbers">2  3  4  5  6</span>
+                                  </span>
+                              </div>
+                          </div>
                     </div>
                     <div class="ba7-bet">
                         <div class="ba7-bet-head">
-                            <div class="ba7-btns-val">
-                                <button class="ba7-btn-val" data-val='10'><span>10</span></button>
-                                <button class="ba7-btn-val" data-val='30'><span>30</span></button>
-                                <button class="ba7-btn-val" data-val='100'><span>100</span></button>
-                                <button class="ba7-btn-val" data-val='300'><span>300</span></button>
-                                <button class="ba7-btn-val" data-val='1000'><span>1000</span></button>
-                                <button class="ba7-btn-val" data-val='3000'><span>3000</span></button>
-                                <button class="ba7-btn-val" data-val='9000'><span>9000</span></button>
+                            <div class="ba7-btns-val" :class="{ 'is-disabled': disabled }">
+                                <button class="ba7-btn-val" v-for="val in bet.bets" :key="val" @click="addUserVal(val)"><span>{{val}}</span></button>
                             </div>
                         </div>
                         <div class="ba7-bet-bottom">
                             <div class="ba7-bet-body">
-                                <div class="ba7-bet-sum">
+                                <div class="ba7-bet-sum" :class="{ 'is-disabled': disabled }">
                                     <div class="ba7-select-wrap">
                                         <template>
                                             <multiselect
@@ -166,14 +158,14 @@
                                         </template>
                                     </div>
                                     <div class="ba7-input-container">
-                                        <input class="ba7-bet-inp" type="text" value="0" />
+                                        <input class="ba7-bet-inp" type="text" v-model.number="bet.user"/>
                                     </div>
                                     <div class="ba7-btn-reset-container">
-                                        <button class="ba7-bet-res"></button>
+                                        <button class="ba7-bet-res" @click="resetVal"></button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="ba7-bet-btn-container">
+                            <div class="ba7-bet-btn-container" @click="startGame" :class="{ 'is-disabled': disabled }">
                                 <button class="ba7-btn-start"><span>Сделать ставку</span></button>
                             </div>
                         </div>
@@ -196,8 +188,8 @@
                 <div class="ba7-modal-in ba7-win-body">
                     <div class="ba7-mresult-title ba7-mresult-title--win">ПОБЕДА!</div>
                     <div class="ba7-mresult">ВЫ ВЫИГРАЛИ!</div>
-                    <p class="ba7-mresult-text">11.5<span> UAH</span></p>
-                    <a href="#" class="ba7-btn ba7-btn-green ba7-mresult-btn arcticmodal-close"><span>ПРодолжить</span></a>
+                    <p class="ba7-mresult-text"><span>{{result}}</span><span> UAH</span></p>
+                    <a href="#" class="ba7-btn ba7-btn-green ba7-mresult-btn" @click="$modal.hide('modal-win')"><span>ПРодолжить</span></a>
                 </div>
             </div>
         </modal>
@@ -215,7 +207,7 @@
                 <div class="ba7-modal-in ba7-lose-body">
                     <div class="ba7-mresult-title ba7-mresult-title--lose">ПОРАЖЕНИЕ!</div>
                     <p class="ba7-mresult-text ba7-lose-text">Попробуйте сыграть еще раз!</p>
-                    <a href="#" class="ba7-btn ba7-btn-green ba7-mresult-btn arcticmodal-close"><span>Продолжить</span></a>
+                    <a href="#" class="ba7-btn ba7-btn-green ba7-mresult-btn"  @click="$modal.hide('modal-lose')"><span>Продолжить</span></a>
                 </div>
             </div>
         </modal>
